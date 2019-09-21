@@ -49,6 +49,20 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.github.paulosalonso</groupId>
+			<artifactId>querydecoder</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.github.paulosalonso</groupId>
+			<artifactId>spring-crud-base</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		
+		
 	</dependencies>
 
 	<build>
