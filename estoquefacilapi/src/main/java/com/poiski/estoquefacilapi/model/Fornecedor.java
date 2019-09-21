@@ -1,11 +1,15 @@
 package com.poiski.estoquefacilapi.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.alon.spring.crud.model.BaseEntity;
 
@@ -47,6 +51,16 @@ public class Fornecedor implements BaseEntity {
 	
 	@Lob
 	private String observacoes;
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
+	private Date dataInclusao;
+	
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
+	private Date dataAlteracao;
+	
+	private String usuarioInclusao;
+	
+	private String usuarioAlteracao;
 
 	public Long getId() {
 		return id;
@@ -158,6 +172,38 @@ public class Fornecedor implements BaseEntity {
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
+	}
+
+	public Date getDataInclusao() {
+		return dataInclusao;
+	}
+
+	public void setDataInclusao(Date dataInclusao) {
+		this.dataInclusao = dataInclusao;
+	}
+
+	public Date getDataAlteracao() {
+		return dataAlteracao;
+	}
+
+	public void setDataAlteracao(Date dataAlteracao) {
+		this.dataAlteracao = dataAlteracao;
+	}
+
+	public String getUsuarioInclusao() {
+		return usuarioInclusao;
+	}
+
+	public void setUsuarioInclusao(String usuarioInclusao) {
+		this.usuarioInclusao = usuarioInclusao;
+	}
+
+	public String getUsuarioExclusao() {
+		return usuarioAlteracao;
+	}
+
+	public void setUsuarioExclusao(String usuarioExclusao) {
+		this.usuarioAlteracao = usuarioExclusao;
 	}
 
 }
