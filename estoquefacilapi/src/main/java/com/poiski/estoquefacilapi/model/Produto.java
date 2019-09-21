@@ -1,30 +1,23 @@
 package com.poiski.estoquefacilapi.model;
 
-import java.util.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.alon.spring.crud.model.BaseEntity;
 import com.poiski.estoquefacilapi.enums.Categoria;
 import com.poiski.estoquefacilapi.enums.TipoEmbalagem;
 
 @Entity
-public class Produto implements BaseEntity {
+public class Produto extends SuperEntity implements BaseEntity {
 
 	private static final long serialVersionUID = 639317072326688711L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	
 	@NotNull
 	private String descricao;
@@ -35,8 +28,6 @@ public class Produto implements BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private Categoria tipoProduto;
 	
-	private Double quantidade;
-	
 	@NotNull
 	private Double valor;
 	
@@ -46,25 +37,18 @@ public class Produto implements BaseEntity {
 	@Lob
 	private String observacoes;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
-	private Date dataInclusao;
-	
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm:ss")
-	private Date dataAlteracao;
-	
-	private String usuarioInclusao;
-	
-	private String usuarioAlteracao;
-	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "fornecedorId")
+	private Fornecedor fornecedor;
 
 	@Override
 	public Long getId() {
-		return id;
+		return this.getId();
 	}
 
 	@Override
 	public void setId(Long id) {
-		this.id = id;
+		this.setId(id);
 
 	}
 
@@ -82,14 +66,6 @@ public class Produto implements BaseEntity {
 
 	public void setTipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
 		this.tipoEmbalagem = tipoEmbalagem;
-	}
-
-	public Double getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Double quantidade) {
-		this.quantidade = quantidade;
 	}
 
 	public Double getValor() {
@@ -122,38 +98,6 @@ public class Produto implements BaseEntity {
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
-	}
-
-	public Date getDataInclusao() {
-		return dataInclusao;
-	}
-
-	public void setDataInclusao(Date dataInclusao) {
-		this.dataInclusao = dataInclusao;
-	}
-
-	public Date getDataAlteracao() {
-		return dataAlteracao;
-	}
-
-	public void setDataAlteracao(Date dataAlteracao) {
-		this.dataAlteracao = dataAlteracao;
-	}
-
-	public String getUsuarioInclusao() {
-		return usuarioInclusao;
-	}
-
-	public void setUsuarioInclusao(String usuarioInclusao) {
-		this.usuarioInclusao = usuarioInclusao;
-	}
-
-	public String getUsuarioAlteracao() {
-		return usuarioAlteracao;
-	}
-
-	public void setUsuarioAlteracao(String usuarioAlteracao) {
-		this.usuarioAlteracao = usuarioAlteracao;
 	}
 
 }
