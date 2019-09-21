@@ -4,7 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import com.poiski.estoquefacilapi.model.EntradaEstoque;
+import com.poiski.estoquefacilapi.repository.custom.EntradaEstoqueRepositoryCustom;
 
-public interface EntradaEstoqueRepository extends JpaRepository<EntradaEstoque, Long>, JpaSpecificationExecutor<EntradaEstoque> {
+public interface EntradaEstoqueRepository extends JpaRepository<EntradaEstoque, Long>, JpaSpecificationExecutor<EntradaEstoque>, EntradaEstoqueRepositoryCustom {
 
 }

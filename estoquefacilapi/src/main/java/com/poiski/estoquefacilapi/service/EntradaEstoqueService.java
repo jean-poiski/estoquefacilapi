@@ -21,5 +21,9 @@ public class EntradaEstoqueService extends CrudService<EntradaEstoque, EntradaEs
 	public List<Order> getDefaultSort() {
 		return Collections.singletonList(Order.asc("dataInclusao"));
 	}
+	
+	public EntradaEstoque buscarPorProduto(Long idProduto) {
+		return this.repository.findByProduct(idProduto);
+	}
 
 }

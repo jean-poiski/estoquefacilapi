@@ -12,9 +12,9 @@ import org.hibernate.annotations.Formula;
 import com.alon.spring.crud.model.BaseEntity;
 
 @Entity
-public class EntradaEstoque extends SuperEntity implements BaseEntity {
+public class VendaAvulsa extends SuperEntity implements BaseEntity {
 
-	private static final long serialVersionUID = -7284996381478604675L;
+	private static final long serialVersionUID = 157189133613164351L;
 	
 	@Column(precision = 10, scale = 2)
 	private Double valor;
@@ -28,16 +28,6 @@ public class EntradaEstoque extends SuperEntity implements BaseEntity {
 	
 	@Formula("valor * quantidade")
 	private Double valorTotal;
-
-	@Override
-	public Long getId() {
-		return this.getId();
-	}
-
-	@Override
-	public void setId(Long id) {
-		this.setId(id);
-	}
 
 	public Double getValor() {
 		return valor;
@@ -70,5 +60,5 @@ public class EntradaEstoque extends SuperEntity implements BaseEntity {
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-
+	
 }
