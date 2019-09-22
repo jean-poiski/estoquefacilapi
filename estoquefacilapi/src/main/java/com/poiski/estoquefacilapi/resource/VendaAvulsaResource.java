@@ -1,8 +1,10 @@
 package com.poiski.estoquefacilapi.resource;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,10 +21,24 @@ public class VendaAvulsaResource extends CrudResource<VendaAvulsa, VendaAvulsaSe
 		super(service);
 	}
 	
-	@PostMapping
-	public VendaAvulsa registra(@PathVariable Double valor, @PathVariable Double quantidade, @PathVariable Long produto) throws Exception {
+	@PostMapping("/registra")
+	public VendaAvulsa registra(@RequestBody ParamVenda params) throws Exception {
 		
-		return this.service.registrarVenda(valor, quantidade, produto);
+		return this.service.registrarVenda(params.valor, params.quantidade, params.produto);
 	}
+	
+	@PostMapping("/atualiza")
+	public VendaAvulsa atualiza(@RequestBody ParamVenda params) throws Exception {
+		
+		return this.service.atualizarVenda(params.venda, params.valor, params.quantidade);
+	}
+	
+	
+	@DeleteMapping("/exclui/{venda}")
+	public void exclui(@PathVariable Long venda) throws Exception {
+		this.service.excluirVenda(venda);
+	}
+
+	
 
 }

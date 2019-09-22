@@ -29,6 +29,16 @@ public class SaidaEstoqueService extends CrudService<SaidaEstoque, SaidaEstoqueR
 		return Collections.singletonList(Order.asc("dataInclusao"));
 	}
 	
+	@Override
+	public SaidaEstoque read(Long id) {
+		Optional<SaidaEstoque> registro = this.repository.findById(id);
+		
+		if(registro.isEmpty())
+			throw new UnsupportedOperationException("Registro de saída do estoque não encontrado");
+			
+		return registro.get();
+	}
+	
 	public SaidaEstoque buscarPorProduto(Long idProduto) {
 		
 		Optional<SaidaEstoque> result = this.repository.findOne(new Specification<SaidaEstoque>() {

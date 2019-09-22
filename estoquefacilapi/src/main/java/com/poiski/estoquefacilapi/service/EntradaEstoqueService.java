@@ -43,7 +43,7 @@ public class EntradaEstoqueService extends CrudService<EntradaEstoque, EntradaEs
 		
 		novaDespesa.setDataInclusao(new Date());
 		novaDespesa.setDescricao(String.format("Entrada do produto %s em estoque", entrada.getProduto().getDescricao()));
-		novaDespesa.setObservacoes(String.format("Despesa gerada a partir da entrada de %d itens do produto %s", entrada.getQuantidade(), entrada.getProduto().getDescricao()));
+		novaDespesa.setObservacoes(String.format("Despesa gerada automaticamente a partir da entrada de %d itens do produto %s", entrada.getQuantidade(), entrada.getProduto().getDescricao()));
 		novaDespesa.setValor(entrada.getQuantidade() * entrada.getValor());
 		novaDespesa.setEstoque(entrada);
 		

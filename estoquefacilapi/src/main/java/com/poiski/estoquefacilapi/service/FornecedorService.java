@@ -2,6 +2,7 @@ package com.poiski.estoquefacilapi.service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Order;
@@ -24,6 +25,14 @@ public class FornecedorService extends CrudService<Fornecedor, FornecedorReposit
 		return Collections.singletonList(Order.asc("cnpj"));
 	}
 
-
+	@Override
+	public Fornecedor read(Long id) {
+		Optional<Fornecedor> registro = this.repository.findById(id);
+		
+		if(registro.isEmpty())
+			throw new UnsupportedOperationException("Despesa não encontrada");
+			
+		return registro.get();
+	}
 
 }

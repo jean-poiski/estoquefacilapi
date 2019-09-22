@@ -9,7 +9,7 @@ import com.poiski.estoquefacilapi.model.EntradaEstoque;
 import com.poiski.estoquefacilapi.service.EntradaEstoqueService;
 
 @RestController
-@RequestMapping("/entradaestoque")
+@RequestMapping("/estoque/entrada")
 @CrossOrigin
 public class EntradaEstoqueResource extends CrudResource<EntradaEstoque, EntradaEstoqueService> {
 

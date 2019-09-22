@@ -4,14 +4,17 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.Formula;
 
 import com.alon.spring.crud.model.BaseEntity;
 
 @Entity
+@Table(indexes = {@Index(name = "produtoIndex", columnList = "produtoId")})
 public class EntradaEstoque extends SuperEntity implements BaseEntity {
 
 	private static final long serialVersionUID = -7284996381478604675L;

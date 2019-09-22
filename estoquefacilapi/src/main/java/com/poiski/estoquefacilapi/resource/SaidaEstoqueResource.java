@@ -9,7 +9,7 @@ import com.poiski.estoquefacilapi.model.SaidaEstoque;
 import com.poiski.estoquefacilapi.service.SaidaEstoqueService;
 
 @RestController
-@RequestMapping("/saidaestoque")
+@RequestMapping("/estoque/saida")
 @CrossOrigin
 public class SaidaEstoqueResource extends CrudResource<SaidaEstoque, SaidaEstoqueService> {
 

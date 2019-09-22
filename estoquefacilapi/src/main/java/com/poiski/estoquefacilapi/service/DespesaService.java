@@ -2,6 +2,7 @@ package com.poiski.estoquefacilapi.service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,16 @@ public class DespesaService extends CrudService<Despesa, DespesaRepository> {
 	public List<Order> getDefaultSort() {
 		return Collections.singletonList(Order.desc("dataInclusao"));
 	}
+	
+	@Override
+	public Despesa read(Long id) {
+		Optional<Despesa> registro = this.repository.findById(id);
+		
+		if(registro.isEmpty())
+			throw new UnsupportedOperationException("Despesa não encontrada");
+			
+		return registro.get();
+	}
+	
 
 }
