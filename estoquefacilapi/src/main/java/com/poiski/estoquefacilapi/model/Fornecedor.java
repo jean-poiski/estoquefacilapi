@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import com.alon.spring.crud.model.BaseEntity;
 
 @Entity
-public class Fornecedor extends SuperEntity implements BaseEntity {
+public class Fornecedor extends CommonEntity implements BaseEntity {
 	
 	private static final long serialVersionUID = 8080929595910578146L;
 

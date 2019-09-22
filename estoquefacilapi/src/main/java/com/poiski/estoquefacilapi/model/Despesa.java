@@ -13,7 +13,7 @@ import com.alon.spring.crud.model.BaseEntity;
 
 @Entity
 @Table(indexes = {@Index(name = "estoqueIndex", columnList = "entradaEstoqueId")})
-public class Despesa extends SuperEntity implements BaseEntity {
+public class Despesa extends CommonEntity implements BaseEntity {
 
 	private static final long serialVersionUID = 5659534064294468322L;
 	

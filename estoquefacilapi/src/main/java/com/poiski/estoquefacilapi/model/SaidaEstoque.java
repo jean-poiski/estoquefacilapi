@@ -15,7 +15,7 @@ import com.alon.spring.crud.model.BaseEntity;
 
 @Entity
 @Table(indexes = {@Index(name = "produtoIndex", columnList = "produtoId")})
-public class SaidaEstoque extends SuperEntity implements BaseEntity {
+public class SaidaEstoque extends CommonEntity implements BaseEntity {
 
 	private static final long serialVersionUID = 9031733008781735450L;
 	

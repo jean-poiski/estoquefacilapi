@@ -8,7 +8,6 @@ import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
 import com.alon.spring.crud.service.CrudService;
-import com.poiski.estoquefacilapi.model.Despesa;
 import com.poiski.estoquefacilapi.model.Produto;
 import com.poiski.estoquefacilapi.repository.ProdutoRepository;
 

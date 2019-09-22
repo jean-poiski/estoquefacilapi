@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @MappedSuperclass
-public class SuperEntity {
+public class CommonEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -15,7 +15,7 @@ import com.poiski.estoquefacilapi.enums.Categoria;
 import com.poiski.estoquefacilapi.enums.TipoEmbalagem;
 
 @Entity
-public class Produto extends SuperEntity implements BaseEntity {
+public class Produto extends CommonEntity implements BaseEntity {
 
 	private static final long serialVersionUID = 639317072326688711L;
 	
