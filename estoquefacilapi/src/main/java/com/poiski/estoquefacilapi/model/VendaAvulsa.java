@@ -28,6 +28,11 @@ public class VendaAvulsa extends SuperEntity implements BaseEntity {
 	
 	@Formula("valor * quantidade")
 	private Double valorTotal;
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "saidaEstoqueId")
+	private SaidaEstoque estoque;
+	
 
 	public Double getValor() {
 		return valor;
@@ -59,6 +64,14 @@ public class VendaAvulsa extends SuperEntity implements BaseEntity {
 
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
+	}
+
+	public SaidaEstoque getEstoque() {
+		return estoque;
+	}
+
+	public void setEstoque(SaidaEstoque estoque) {
+		this.estoque = estoque;
 	}
 	
 }

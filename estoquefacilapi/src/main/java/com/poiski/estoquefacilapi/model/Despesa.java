@@ -1,11 +1,18 @@
 package com.poiski.estoquefacilapi.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.alon.spring.crud.model.BaseEntity;
 
 @Entity
+@Table(indexes = {@Index(name = "estoqueIndex", columnList = "entradaEstoqueId")})
 public class Despesa extends SuperEntity implements BaseEntity {
 
 	private static final long serialVersionUID = 5659534064294468322L;
@@ -16,6 +23,10 @@ public class Despesa extends SuperEntity implements BaseEntity {
 	private Double valor;
 	
 	private String observacoes;
+	
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "entradaEstoqueId")
+	private EntradaEstoque estoque;
 	
 	@Override
 	public Long getId() {
@@ -49,6 +60,14 @@ public class Despesa extends SuperEntity implements BaseEntity {
 
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
+	}
+
+	public EntradaEstoque getEstoque() {
+		return estoque;
+	}
+
+	public void setEstoque(EntradaEstoque estoque) {
+		this.estoque = estoque;
 	}
 
 }

@@ -31,7 +31,7 @@ public class VendaAvulsaService extends CrudService<VendaAvulsa, VendaAvulsaRepo
 		super(repository);
 		
 		addBeforeCreateHook(this::validarProdutoEstoque);
-		addAfterCreateHook(this::registrarSaidaEstoque);
+		addBeforeCreateHook(this::registrarSaidaEstoque);
 	}
 
 	@Override
@@ -63,16 +63,22 @@ public class VendaAvulsaService extends CrudService<VendaAvulsa, VendaAvulsaRepo
 		produtoEstoque.setValor(venda.getValor());
 		produtoEstoque.setDataInclusao(new Date());
 			
-		saiEstoqueServ.create(produtoEstoque);
+		produtoEstoque = saiEstoqueServ.create(produtoEstoque);
+		
+		venda.setEstoque(produtoEstoque);
 		
 		return venda;
 	}
 	
-	public VendaAvulsa registrarVenda(VendaAvulsa venda) throws CreateException {
+	public VendaAvulsa registrarVenda(Double valor, Double quantidade, Long idProduto) throws CreateException {
 		
-		venda.setProduto(produtoServ.read(venda.getProduto().getId()));
+		VendaAvulsa novaVenda = new VendaAvulsa();
+		novaVenda.setQuantidade(quantidade);
+		novaVenda.setValor(valor);
 		
-		return this.create(venda);
+		novaVenda.setProduto(produtoServ.read(idProduto));
+		
+		return this.create(novaVenda);
 	}
 
 }
