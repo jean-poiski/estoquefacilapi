@@ -8,10 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import com.alon.spring.crud.model.BaseEntity;
 
 @MappedSuperclass
-public class CommonEntity {
-	
+public class CommonEntity implements BaseEntity {
+    private static final long serialVersionUID = 3810002156604372799L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -27,7 +28,7 @@ public class CommonEntity {
 	private String usuarioAlteracao;
 
 	public Date getDataInclusao() {
-		return dataInclusao;
+		return this.dataInclusao;
 	}
 
 	public void setDataInclusao(Date dataInclusao) {
@@ -35,7 +36,7 @@ public class CommonEntity {
 	}
 
 	public Date getDataAlteracao() {
-		return dataAlteracao;
+		return this.dataAlteracao;
 	}
 
 	public void setDataAlteracao(Date dataAlteracao) {
@@ -43,7 +44,7 @@ public class CommonEntity {
 	}
 
 	public String getUsuarioInclusao() {
-		return usuarioInclusao;
+		return this.usuarioInclusao;
 	}
 
 	public void setUsuarioInclusao(String usuarioInclusao) {
@@ -51,7 +52,7 @@ public class CommonEntity {
 	}
 
 	public String getUsuarioAlteracao() {
-		return usuarioAlteracao;
+		return this.usuarioAlteracao;
 	}
 
 	public void setUsuarioAlteracao(String usuarioAlteracao) {
@@ -59,7 +60,7 @@ public class CommonEntity {
 	}
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
